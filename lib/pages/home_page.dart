@@ -1,10 +1,15 @@
 import 'dart:convert';
 
+import 'package:catalog_app/widgets/home_widget/catalog_header.dart';
+import 'package:catalog_app/widgets/home_widget/catalog_list.dart';
+import "package:velocity_x/velocity_x.dart";
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 import 'package:catalog_app/model/catalog.dart';
 import 'package:catalog_app/widgets/drawer.dart';
 import 'package:catalog_app/widgets/item_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:catalog_app/widgets/themes.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -43,20 +48,19 @@ class _HomePageState extends State<HomePage> {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Scaffold(
-        appBar: AppBar(
-          title: Text("Catalog App"),
-        ),
-        body: Center(
-            child: ListView.builder(
-          itemCount: CatalogModel.items.length,
-          itemBuilder: (context, index) {
-            return ItemWidget(
-              item: CatalogModel.items[index],
-            );
-          },
-        )),
-        drawer: MyDrawer(),
-      ),
+          backgroundColor: MyTheme.creamColor,
+          body: SafeArea(
+            child: Container(
+              padding: Vx.m32,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CatalogHeader(),
+                  CatalogList().expand(),
+                ],
+              ),
+            ),
+          )),
     );
   }
 }

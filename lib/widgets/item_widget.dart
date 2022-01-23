@@ -9,9 +9,8 @@ class ItemWidget extends StatelessWidget {
         super(key: key);
   //const ({ Key? key }) : super(key: key);
 
-  @override 
+  @override
   Widget build(BuildContext context) {
-    
     return ListTile(
       leading: Image.network(item.image),
       title: Text(item.name),
