@@ -1,3 +1,4 @@
+import 'package:catalog_app/pages/cart_page.dart';
 import 'package:catalog_app/pages/home_page.dart';
 import 'package:catalog_app/pages/login.dart';
 import 'package:catalog_app/utils/routes.dart';
@@ -14,13 +15,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       theme: MyTheme.lightTheme(context),
       debugShowCheckedModeBanner: false,
       initialRoute: MyRoutes.homeRoutes,
       routes: {
         MyRoutes.loginRoutes: (context) => LoginPage(),
         MyRoutes.homeRoutes: (context) => HomePage(),
+        MyRoutes.CartRoutes: (context) => CartPage(),
       },
     );
   }

@@ -11,6 +11,17 @@ class CatalogModel {
       image: "https://m.media-amazon.com/images/I/71z4b3G3GAL._AC_SL1500_.jpg",
     )
   ];
+
+  static final catModel = CatalogModel._internal();
+
+  CatalogModel._internal();
+
+  factory CatalogModel() => catModel;
+
+  Item getById(int id) =>
+      items.firstWhere((element) => element.id == id, orElse: null);
+
+  Item getByPosition(int pos) => items[pos];
 }
 
 class Item {

@@ -1,9 +1,11 @@
-import 'package:catalog_app/model/catalog.dart';
-import 'package:catalog_app/pages/home_details.dart';
-
-import 'package:catalog_app/widgets/themes.dart';
+import 'package:catalog_app/widgets/home_widget/add_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
+
+import 'package:catalog_app/model/cart.dart';
+import 'package:catalog_app/model/catalog.dart';
+import 'package:catalog_app/pages/home_details.dart';
+import 'package:catalog_app/widgets/themes.dart';
 
 import 'catalog_image.dart';
 
@@ -35,16 +37,7 @@ class CatalogItem extends StatelessWidget {
               alignment: MainAxisAlignment.spaceBetween,
               children: [
                 "\$${catalog.price}".text.bold.xl.make(),
-                ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(MyTheme.BluishColor),
-                      shape: MaterialStateProperty.all(
-                        StadiumBorder(),
-                      )),
-                  onPressed: () {},
-                  child: "Buy".text.make(),
-                )
+                AddToCart(catalog: catalog),
               ],
             ).pOnly(right: 8)
           ],
@@ -70,7 +63,7 @@ class CatalogList extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => HomeDetails(catalog: catalog),
-              )   ),
+              )),
           child: CatalogItem(
             catalog: catalog,
           ),
